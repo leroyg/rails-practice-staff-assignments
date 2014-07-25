@@ -1,5 +1,7 @@
 class Person < ActiveRecord::Base
 
+  has_many :assignments
+
   validate :name_title_combinations
 
   private

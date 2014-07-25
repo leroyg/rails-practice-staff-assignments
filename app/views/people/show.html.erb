@@ -1,3 +1,20 @@
-<h1> Details for <%= "#{@person.title} #{@person.first_name} #{@person.last_name}" %></h1>
-
+<h1 class="inline"> Details for <%= "#{@person.title} #{@person.first_name} #{@person.last_name}" %></h1>
 <%= link_to 'Edit details', edit_person_path(@person) %>
+
+<h2>Locations</h2>
+
+<%= link_to '+ Add Location', new_person_assignment_path(@person), class: 'add-location' %>
+
+<table class="assignments">
+  <thead>
+  <tr>
+    <td>Location</td>
+    <td>Role</td>
+  </tr>
+
+  </thead>
+  <tbody>
+  <%= render partial: 'assignment', collection: @person.assignments %>
+  </tbody>
+</table>
+

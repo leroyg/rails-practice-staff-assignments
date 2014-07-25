@@ -84,7 +84,6 @@ main {
   }
 }
 
-
 .table {
   width: 100%;
 
@@ -119,4 +118,38 @@ main {
   }
 
   padding-bottom: 1em;
+}
+
+$border: solid #000000 2px;
+$padding: .5em;
+$row-color: #D3D3D3;
+
+.inline {
+  display: inline-block;
+}
+
+.assignments {
+  border: $border;
+  width: 100%;
+  td {
+    border-right: $border;
+    padding: 0 $padding;
+  }
+  thead {
+    background-color: $row-color;
+  }
+  tbody {
+    td {
+      padding: $padding;
+    }
+    tr:nth-child(odd) {
+      background-color: lighten($row-color, 10%);
+    }
+  }
+}
+
+.add-location {
+  float: right;
+  margin-top: -2.5em;
+  clear: both;
 }

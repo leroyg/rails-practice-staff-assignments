@@ -1,0 +1,15 @@
+<h1>Assign <%= "#{@person.first_name} #{@person.last_name}" %> to a location</h1>
+
+<%= form_for [@person, @assignment] do |f| %>
+    <div class="form-row">
+      <%= f.label :location, "Location" %>
+      <%= f.collection_select :location_id, @locations, :id, :name %>
+    </div>
+    <div class="form-row">
+      <%= f.label :role %>
+      <%= f.text_field :role %>
+    </div>
+    <div class="form-row">
+      <%= f.submit 'Assign' %>
+    </div>
+<% end %>
