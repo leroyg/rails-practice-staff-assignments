@@ -18,6 +18,26 @@ class AssignmentsController < ApplicationController
 
   end
 
+  def edit
+    @person = Person.find(params[:person_id])
+    @assignment = Assignment.find(params[:id])
+    @locations = Location.all
+
+    render :new
+  end
+
+  def update
+    @person = Person.find(params[:person_id])
+    @assignment = Assignment.find(params[:id])
+    if @assignment.update_attributes(assignment_params)
+      redirect_to person_path(@person)
+    else
+      @locations = Location.all
+      flash.now[:error] = "Assignment could not be updated."
+      render :new
+    end
+  end
+
   private
 
   def assignment_params
