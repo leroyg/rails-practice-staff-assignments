@@ -9,7 +9,7 @@ class AssignmentsController < ApplicationController
     @person = Person.find(params[:person_id])
     @assignment = Assignment.new(assignment_params.merge(person_id: @person.id))
     if @assignment.save
-      redirect_to person_path(@person)
+      redirect_to person_path(@person), notice: 'Assignment created.'
     else
       @locations = Location.all
       flash.now[:error] = "Assignment could not be created."
@@ -30,7 +30,7 @@ class AssignmentsController < ApplicationController
     @person = Person.find(params[:person_id])
     @assignment = Assignment.find(params[:id])
     if @assignment.update_attributes(assignment_params)
-      redirect_to person_path(@person)
+      redirect_to person_path(@person), notice: 'Assignment updated.'
     else
       @locations = Location.all
       flash.now[:error] = "Assignment could not be updated."
