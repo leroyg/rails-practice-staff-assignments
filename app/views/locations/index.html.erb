@@ -7,12 +7,6 @@
   </tr>
   </thead>
   <tbody>
-  <% @locations.each do |location| %>
-    <tr>
-      <td>
-        <%= location.name %>
-      </td>
-    </tr>
-  <% end %>
+  <%= render partial: 'location', collection: @locations %>
   </tbody>
 </table>
