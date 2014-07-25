@@ -30,4 +30,18 @@ describe Person do
 
     expect(person).to_not be_valid
   end
+
+  it 'knows how many unique locations it is at' do
+    person = Person.new(first_name: 'Sue', last_name: 'Smith')
+    denver = Location.new(name: 'Denver')
+    boulder = Location.new(name: 'Boulder')
+
+    person.assignments << Assignment.new(role: "Janitor", location: denver)
+    person.assignments << Assignment.new(role: "Developer", location: denver)
+    person.assignments << Assignment.new(role: "Janitor", location: boulder)
+
+    person.save!
+
+    expect(person.unique_locations).to eq 2
+  end
 end

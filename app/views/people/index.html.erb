@@ -5,6 +5,7 @@
   <thead>
   <tr>
     <th>Name</th>
+    <th>Locations</th>
   </tr>
   </thead>
   <tbody>
@@ -12,6 +13,9 @@
       <tr>
         <td>
           <%= link_to "#{person.title} #{person.first_name} #{person.last_name}", person_path(person)%>
+        </td>
+        <td>
+          <%= person.unique_locations%>
         </td>
       </tr>
   <% end %>

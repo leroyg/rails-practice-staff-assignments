@@ -4,6 +4,10 @@ class Person < ActiveRecord::Base
 
   validate :name_title_combinations
 
+  def unique_locations
+    Assignment.where(person_id: self.id).pluck(:location_id).uniq.count
+  end
+
   private
 
   def name_title_combinations
