@@ -38,6 +38,12 @@ class AssignmentsController < ApplicationController
     end
   end
 
+  def destroy
+    @person = Person.find(params[:person_id])
+    Assignment.find(params[:id]).destroy
+    redirect_to person_path(@person), notice: 'Assignment deleted.'
+  end
+
   private
 
   def assignment_params
