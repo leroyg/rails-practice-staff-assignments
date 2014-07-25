@@ -1,5 +1,7 @@
 <h1>Add a Staff Member</h1>
 
+<%= render partial: 'common/errors', locals: {person: @person} %>
+
 <%= form_for @person do |f| %>
 
   <div class="form-row">

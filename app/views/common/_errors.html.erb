@@ -1,0 +1,5 @@
+<div class="errors flash"><%= flash[:error] %></div>
+
+<% person.errors.full_messages.each do |message| %>
+    <p class="errors"><%= message %></p>
+<% end %>

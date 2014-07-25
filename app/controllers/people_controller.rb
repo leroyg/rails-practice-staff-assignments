@@ -19,9 +19,12 @@ class PeopleController < ApplicationController
   def update
     @person = Person.find(params[:id])
 
-    @person.update_attributes(person_params)
-
-    redirect_to person_path(@person)
+    if @person.update_attributes(person_params)
+      redirect_to person_path(@person)
+    else
+      flash.now[:error] = "Person could not be updated."
+      render :edit
+    end
   end
 
   def create
@@ -29,6 +32,7 @@ class PeopleController < ApplicationController
     if @person.save
       redirect_to root_path, notice: "Person was created!"
     else
+      flash.now[:error] = "Person could not be created."
       render :new
     end
   end
