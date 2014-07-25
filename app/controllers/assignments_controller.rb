@@ -8,8 +8,14 @@ class AssignmentsController < ApplicationController
   def create
     @person = Person.find(params[:person_id])
     @assignment = Assignment.new(assignment_params.merge(person_id: @person.id))
-    @assignment.save!
-    redirect_to person_path(@person)
+    if @assignment.save
+      redirect_to person_path(@person)
+    else
+      @locations = Location.all
+      flash.now[:error] = "Assignment could not be created."
+      render :new
+    end
+
   end
 
   private

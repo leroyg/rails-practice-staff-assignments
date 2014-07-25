@@ -1,5 +1,7 @@
 <h1>Assign <%= "#{@person.first_name} #{@person.last_name}" %> to a location</h1>
 
+<%= render partial: 'common/errors', locals: {model: @assignment} %>
+
 <%= form_for [@person, @assignment] do |f| %>
     <div class="form-row">
       <%= f.label :location, "Location" %>
