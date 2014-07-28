@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 feature "Assignments" do
+
+  let(:user) { create_user }
+
   scenario 'Assigning person to a location' do
-    user = create_user
     Person.create!(title: 'Mr', first_name: 'Bob', last_name: 'Smith')
     Location.create!(name: 'Boulder')
 
@@ -24,7 +26,6 @@ feature "Assignments" do
   end
 
   scenario 'Editing an assignment' do
-    user = create_user
     person = Person.create!(title: 'Mr', first_name: 'Bob', last_name: 'Smith')
     location = Location.create!(name: 'Boulder')
     Location.create!(name: 'Denver')
@@ -54,7 +55,6 @@ feature "Assignments" do
   end
 
   scenario 'Deleting an assignment' do
-    user = create_user
     person = Person.create!(title: 'Mr', first_name: 'Bob', last_name: 'Smith')
     location = Location.create!(name: 'Boulder')
     Location.create!(name: 'Denver')
