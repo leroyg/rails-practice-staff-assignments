@@ -2,13 +2,11 @@ require 'rails_helper'
 
 feature 'Managing people' do
   scenario 'Editing person details' do
-    create_user
+    user = create_user
     Person.create!(title: 'Mr', first_name: 'Bob', last_name: 'Smith')
 
     visit root_path
-    fill_in "Email", with: "user@example.com"
-    fill_in "Password", with: "password"
-    click_on "Login"
+    log_in_user(user)
 
     click_link 'Mr Bob Smith'
 

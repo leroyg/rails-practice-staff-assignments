@@ -2,14 +2,12 @@ require 'rails_helper'
 
 feature "Assignments" do
   scenario 'Assigning person to a location' do
-    create_user
+    user = create_user
     Person.create!(title: 'Mr', first_name: 'Bob', last_name: 'Smith')
     Location.create!(name: 'Boulder')
 
     visit root_path
-    fill_in "Email", with: "user@example.com"
-    fill_in "Password", with: "password"
-    click_on "Login"
+    log_in_user(user)
 
     click_link 'Mr Bob Smith'
 
@@ -26,16 +24,14 @@ feature "Assignments" do
   end
 
   scenario 'Editing an assignment' do
-    create_user
+    user = create_user
     person = Person.create!(title: 'Mr', first_name: 'Bob', last_name: 'Smith')
     location = Location.create!(name: 'Boulder')
     Location.create!(name: 'Denver')
     person.assignments.create!(location: location, role: "Developer")
 
     visit root_path
-    fill_in "Email", with: "user@example.com"
-    fill_in "Password", with: "password"
-    click_on "Login"
+    log_in_user(user)
 
     visit person_path(person)
 
@@ -58,16 +54,14 @@ feature "Assignments" do
   end
 
   scenario 'Deleting an assignment' do
-    create_user
+    user = create_user
     person = Person.create!(title: 'Mr', first_name: 'Bob', last_name: 'Smith')
     location = Location.create!(name: 'Boulder')
     Location.create!(name: 'Denver')
     person.assignments.create!(location: location, role: "Developer")
 
     visit root_path
-    fill_in "Email", with: "user@example.com"
-    fill_in "Password", with: "password"
-    click_on "Login"
+    log_in_user(user)
 
     visit person_path(person)
 
