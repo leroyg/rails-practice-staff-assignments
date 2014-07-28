@@ -5,7 +5,7 @@ feature "Assignments" do
   let(:user) { create_user }
 
   scenario 'Assigning person to a location' do
-    Person.create!(title: 'Mr', first_name: 'Bob', last_name: 'Smith')
+    create_person(title: 'Mr', first_name: 'Bob', last_name: 'Smith')
     Location.create!(name: 'Boulder')
 
     visit root_path
@@ -26,7 +26,7 @@ feature "Assignments" do
   end
 
   scenario 'Editing an assignment' do
-    person = Person.create!(title: 'Mr', first_name: 'Bob', last_name: 'Smith')
+    person = create_person
     location = Location.create!(name: 'Boulder')
     Location.create!(name: 'Denver')
     person.assignments.create!(location: location, role: "Developer")
@@ -55,7 +55,7 @@ feature "Assignments" do
   end
 
   scenario 'Deleting an assignment' do
-    person = Person.create!(title: 'Mr', first_name: 'Bob', last_name: 'Smith')
+    person = create_person
     location = Location.create!(name: 'Boulder')
     Location.create!(name: 'Denver')
     person.assignments.create!(location: location, role: "Developer")

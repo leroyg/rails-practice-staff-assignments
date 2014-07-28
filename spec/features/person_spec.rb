@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Managing people' do
   scenario 'Editing person details' do
     user = create_user
-    Person.create!(title: 'Mr', first_name: 'Bob', last_name: 'Smith')
+    create_person(title: 'Mr', first_name: 'Bob', last_name: 'Smith')
 
     visit root_path
     log_in_user(user)
