@@ -125,7 +125,7 @@ main {
 }
 
 $border: solid #000000 2px;
-$padding: .5em;
+$base-padding: .5em;
 $row-color: #D3D3D3;
 
 .inline {
@@ -137,14 +137,14 @@ $row-color: #D3D3D3;
   width: 100%;
   td {
     border-right: $border;
-    padding: 0 $padding;
+    padding: 0 $base-padding;
   }
   thead {
     background-color: $row-color;
   }
   tbody {
     td {
-      padding: $padding;
+      padding: $base-padding;
     }
     tr:nth-child(odd) {
       background-color: lighten($row-color, 10%);
