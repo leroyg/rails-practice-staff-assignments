@@ -2,25 +2,4 @@
 
 <%= render partial: 'common/errors', locals: {model: @person} %>
 
-<%= form_for @person do |f| %>
-
-    <div class="form-row">
-      <%= f.label :title %>
-      <%= f.text_field :title, autofocus: true, placeholder: "i.e. Dr." %>
-    </div>
-
-    <div class="form-row">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
-    </div>
-
-    <div class="form-row">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
-    </div>
-
-    <div class="form-row">
-      <%= f.submit %>
-    </div>
-
-<% end %>
+<%= render partial: 'form' %>
