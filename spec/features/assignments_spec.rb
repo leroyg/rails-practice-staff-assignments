@@ -2,14 +2,16 @@ require 'rails_helper'
 
 feature "Assignments" do
 
-  let(:user) { create_user }
+  before do
+    @user = create_user
+  end
 
   scenario 'Assigning person to a location' do
     create_person(title: 'Mr', first_name: 'Bob', last_name: 'Smith')
     Location.create!(name: 'Boulder')
 
     visit root_path
-    log_in_user(user)
+    log_in_user(@user)
 
     click_link 'Mr Bob Smith'
 
@@ -32,7 +34,7 @@ feature "Assignments" do
     person.assignments.create!(location: location, role: "Developer")
 
     visit root_path
-    log_in_user(user)
+    log_in_user(@user)
 
     visit person_path(person)
 
@@ -61,7 +63,7 @@ feature "Assignments" do
     person.assignments.create!(location: location, role: "Developer")
 
     visit root_path
-    log_in_user(user)
+    log_in_user(@user)
 
     visit person_path(person)
 
