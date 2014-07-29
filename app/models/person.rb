@@ -15,11 +15,11 @@ class Person < ActiveRecord::Base
 
     if title.blank?
       if first_name.blank? || last_name.blank?
-        errors[:base] << error_string
+        errors.add(:base, error_string)
       end
     else
       if last_name.blank?
-        errors[:base] << error_string
+        errors.add(:base, error_string)
       end
     end
   end
